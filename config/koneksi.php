@@ -42,11 +42,16 @@ if (!$found) {
         nama_ruangan VARCHAR(100) NOT NULL
       )";
             mysqli_query($conn, $sql1);
+            //--- Tambah data ruangan default
+            $sql1 = "INSERT INTO ruangan (nama_ruangan) VALUES ('HI-101'), ('HI-102'), ('HI-103'), ('HI-201'), ('HI-202'), ('HI-203'), ('HI-301'), ('HI-302'), ('HI-303')";
+            mysqli_query($conn, $sql1);
 
             // --- Buat tabel barang
             $sql2 = "CREATE TABLE IF NOT EXISTS barang (
         id_barang INT AUTO_INCREMENT PRIMARY KEY,
         nama_barang VARCHAR(100) NOT NULL,
+        kode_barang VARCHAR(50) NOT NULL,
+        UNIQUE (kode_barang),
         jumlah INT NOT NULL,
         kondisi ENUM('Baik','Rusak') NOT NULL,
         id_ruangan INT,
