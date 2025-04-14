@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/style.css">
-    <title>Document</title>
+    <title>Aplikasi Inventaris Barang Laboratorium Komputer</title>
 </head>
 
 <body>
@@ -15,13 +15,15 @@
         <div class="nav">
             <a href="barang/form_input.php">+ Tambah Barang</a>
             <a href="barang/list.php">📦 Lihat Barang</a>
-            <a href="laporan/index.php">📊 Laporan</a>
+            <a href="laporan/form_hilang.php">🛑 Lapor Kehilangan</a>
+            <a href="laporan/list_hilang.php">📋 Lihat Laporan</a>
         </div>
 
         <form action="barang/cari.php" method="get" style="margin-top: 30px;">
             <input type="text" name="q" placeholder="Cari nama atau kode barang..." required>
             <button type="submit">🔍 Cari</button>
         </form>
+
     </div>
 </body>
 
