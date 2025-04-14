@@ -16,7 +16,7 @@ $barang = mysqli_query($conn, "SELECT * FROM barang ORDER BY nama_barang");
     <div class="container">
         <h3>🛑 Lapor Barang Hilang</h3>
 
-        <form action="simpan_laporan.php" method="POST">
+        <form class="form" action="simpan_laporan.php" method="POST">
             <select name="barang_id" required>
                 <option value="">Pilih Barang</option>
                 <?php while ($b = mysqli_fetch_assoc($barang)) : ?>

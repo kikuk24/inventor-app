@@ -21,6 +21,7 @@ $data = mysqli_query($conn, "
     <div class="container">
         <h2>📋 Daftar Laporan Barang Hilang</h2>
 
+        <div class="table-container">
         <table>
             <thead>
                 <tr>
@@ -46,8 +47,9 @@ $data = mysqli_query($conn, "
                 <?php endwhile; ?>
             </tbody>
         </table>
+        </div>
 
-        <a href="/barang/list.php" class="btn-back">⏪ Kembali</a>
+        <a href="../index.php" class="btn-back">⏪ Kembali</a>
     </div>
 </body>
 

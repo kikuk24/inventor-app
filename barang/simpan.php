@@ -25,4 +25,4 @@ $query = "INSERT INTO barang (nama_barang, kondisi, kode_barang, jumlah, id_ruan
 
 mysqli_query($conn, $query);
 
-header("Location: list.php");
+header("Location: ../index.php");

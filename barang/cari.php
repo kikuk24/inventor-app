@@ -14,105 +14,71 @@ $data = mysqli_query($conn, "
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="id">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hasil Pencarian</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            padding: 20px;
-        }
+    <link rel="stylesheet" href="../assets/style.css">
 
-        h2 {
-            margin-bottom: 20px;
-        }
-
-        input[type="text"] {
-            padding: 8px;
-            width: 300px;
-            margin-right: 10px;
-        }
-
-        button {
-            padding: 8px 16px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            margin-top: 20px;
-        }
-
-        th,
-        td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f4f4f4;
-        }
-
-        tr:hover {
-            background-color: #f0f8ff;
-        }
-
-        .btn-back {
-            display: inline-block;
-            margin-top: 20px;
-            text-decoration: none;
-            color: white;
-            background-color: #555;
-            padding: 8px 16px;
-            border-radius: 6px;
-        }
-    </style>
 </head>
 
 <body>
-    <h2>🔍 Hasil Pencarian: <em><?= htmlspecialchars($q) ?></em></h2>
+    <div class="container">
+        <h2>🔍 Hasil Pencarian: <em><?= htmlspecialchars($q) ?></em></h2>
 
-    <table class="wrapper">
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Nama Barang</th>
-                <th>Kode</th>
-                <th>Jumlah</th>
-                <th>Kondisi</th>
-                <th>Ruangan</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            $no = 1;
-            if (mysqli_num_rows($data) > 0):
-                while ($row = mysqli_fetch_assoc($data)): ?>
+        <div class="table-container">
+            <table>
+                <thead>
                     <tr>
-                        <td><?= $no++ ?></td>
-                        <td><?= htmlspecialchars($row['nama_barang']) ?></td>
-                        <td><?= $row['kode_barang'] ?></td>
-                        <td><?= $row['jumlah'] ?></td>
-                        <td><?= $row['kondisi'] ?></td>
-                        <td><?= $row['nama_ruangan'] ?? '-' ?></td>
+                        <th class="hide-mobile">No</th>
+                        <th>Nama Barang</th>
+                        <th>Kode</th>
+                        <th class="hide-mobile">Jumlah</th>
+                        <th class="hide-mobile">Kondisi</th>
+                        <th class="hide-mobile">Ruangan</th>
+                        <th>Action</th>
                     </tr>
-                <?php endwhile;
-            else: ?>
-                <tr>
-                    <td colspan="6" style="text-align:center;">Tidak ada hasil untuk pencarian ini.</td>
-                </tr>
-            <?php endif; ?>
-        </tbody>
-    </table>
+                </thead>
+                <tbody>
+                    <?php
+                    $no = 1;
+                    if (mysqli_num_rows($data) > 0):
+                        while ($row = mysqli_fetch_assoc($data)): ?>
+                            <tr>
+                                <td class="hide-mobile"><?= $no++ ?></td>
+                                <td>
+                                    <?= htmlspecialchars($row['nama_barang']) ?>
+                                    <div class="mobile-data">
+                                        <div>Jumlah: <?= $row['jumlah'] ?></div>
+                                        <div>Kondisi: <?= $row['kondisi'] ?></div>
+                                        <div>Ruangan: <?= $row['nama_ruangan'] ?? '-' ?></div>
+                                    </div>
+                                </td>
+                                <td><?= $row['kode_barang'] ?></td>
+                                <td class="hide-mobile"><?= $row['jumlah'] ?></td>
+                                <td class="hide-mobile"><?= $row['kondisi'] ?></td>
+                                <td class="hide-mobile"><?= $row['nama_ruangan'] ?? '-' ?></td>
+                                <td>
+                                    <div class="action-links">
+                                        <a href="form_edit.php?id=<?= $row['id_barang'] ?>">Edit</a>
+                                        <a href="hapus.php?id=<?= $row['id_barang'] ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus barang ini?')">Hapus</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php endwhile;
+                    else: ?>
+                        <tr>
+                            <td colspan="7" class="no-results">Tidak ada hasil untuk pencarian ini.</td>
+                        </tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
 
-    <a href="list.php" class="btn-back">⏪ Kembali ke Beranda</a>
+        <a href="/" class="btn-back">⏪ Kembali ke Beranda</a>
+    </div>
 </body>
 
 </html>

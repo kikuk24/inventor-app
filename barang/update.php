@@ -17,7 +17,7 @@ $query = "UPDATE barang SET
 $result = mysqli_query($conn, $query);
 
 if ($result) {
-    echo "<script>alert('✅ Data barang berhasil diperbarui'); window.location.href = 'list.php';</script>";
+    echo "<script>alert('✅ Data barang berhasil diperbarui'); window.location.href = '../index.php';</script>";
 } else {
     echo "<script>alert('❌ Gagal memperbarui data barang'); history.back();</script>";
 }

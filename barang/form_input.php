@@ -14,7 +14,7 @@ $ruangan = mysqli_query($conn, "SELECT * FROM ruangan");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Tambah Barang</title>
     <link rel="stylesheet" href="../assets/style.css">
-
+    
 </head>
 
 <body>
@@ -25,6 +25,7 @@ $ruangan = mysqli_query($conn, "SELECT * FROM ruangan");
             <input type="text" name="nama" placeholder="Nama Barang" required>
 
             <input type="number" name="jumlah" placeholder="Jumlah Barang" required>
+
             <select name="kondisi" required>
                 <option value="">Pilih Kondisi</option>
                 <option value="Baik">Baik</option>
@@ -40,6 +41,7 @@ $ruangan = mysqli_query($conn, "SELECT * FROM ruangan");
 
             <button type="submit">💾 Simpan Barang</button>
         </form>
+
         <div style="margin-top: 20px;">
             <a href="../index.php" class="btn-back">⏪ Kembali</a>
         </div>
