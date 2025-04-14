@@ -40,7 +40,7 @@ if (!$found) {
             $sql1 = "CREATE TABLE IF NOT EXISTS ruangan (
         id_ruangan INT AUTO_INCREMENT PRIMARY KEY,
         nama_ruangan VARCHAR(100) NOT NULL
-      )";
+        )";
             mysqli_query($conn, $sql1);
             //--- Tambah data ruangan default
             $sql1 = "INSERT INTO ruangan (nama_ruangan) VALUES ('HI-101'), ('HI-102'), ('HI-103'), ('HI-201'), ('HI-202'), ('HI-203'), ('HI-301'), ('HI-302'), ('HI-303')";
@@ -56,9 +56,18 @@ if (!$found) {
         kondisi ENUM('Baik','Rusak') NOT NULL,
         id_ruangan INT,
         FOREIGN KEY (id_ruangan) REFERENCES ruangan(id_ruangan)
-      )";
+        )";
             mysqli_query($conn, $sql2);
 
+            //--- Buat tabel barang_hilang
+            $sql2 = "CREATE TABLE IF NOT EXISTS barang_hilang (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            id_barang INT NOT NULL,
+            tanggal_lapor DATE NOT NULL,
+            keterangan TEXT,
+            FOREIGN KEY (id_barang) REFERENCES barang(id_barang)
+)";
+            mysqli_query($conn, $sql2);
             echo "<script>alert('✅ Database & tabel berhasil dibuat!'); location.reload();</script>";
         } else {
             echo "<p>❌ Gagal membuat database: " . mysqli_error($conn) . "</p>";
