@@ -22,10 +22,23 @@ $data = mysqli_query($conn, "SELECT b.*, r.nama_ruangan FROM barang b LEFT JOIN 
             <a href="/laporan/form_hilang.php">🛑 Lapor Kehilangan</a>
             <a href="/laporan/list_hilang.php">📋 Lihat Laporan</a>
         </div>
-
         <div class="search-form">
             <form action="/barang/cari.php" method="get">
-                <input type="text" name="q" placeholder="Cari nama atau kode barang..." required>
+                <input type="text" name="q" placeholder="Cari nama atau kode barang...">
+                <select name="kondisi">
+                    <option value="">Semua Kondisi</option>
+                    <option value="Baik">Baik</option>
+                    <option value="Rusak">Rusak</option>
+                </select>
+                <select name="ruangan">
+                    <option value="">Semua Ruangan</option>
+                    <?php
+                    $ruangan = mysqli_query($conn, "SELECT * FROM ruangan");
+                    while ($r = mysqli_fetch_assoc($ruangan)) {
+                        echo '<option value="' . $r['id_ruangan'] . '">' . $r['nama_ruangan'] . '</option>';
+                    }
+                    ?>
+                </select>
                 <button type="submit">🔍 Cari</button>
             </form>
         </div>
