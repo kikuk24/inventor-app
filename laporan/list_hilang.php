@@ -19,7 +19,7 @@ $data = mysqli_query($conn, "
 
 <body>
     <div class="container">
-        <h2>📋 Daftar Laporan Barang Hilang</h2>
+        <h2><span class="icon">📋</span> Daftar Laporan Barang Hilang</h2>
 
         <div class="table-container">
         <table>
@@ -50,6 +50,7 @@ $data = mysqli_query($conn, "
         </div>
 
         <a href="../index.php" class="btn-back">⏪ Kembali</a>
+        <button onclick="window.print()" class="btn-export">🖨️ Export ke PDF</button>
     </div>
 </body>
 

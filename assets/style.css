@@ -326,3 +326,58 @@ tr:hover {
         margin: 0 auto;
     }
 }
+
+@media print {
+    .icon {
+        display: none;
+    }
+    h2::before {
+        content: "";
+    }
+
+    /* Hilangkan shadow, radius, dan background putih */
+    .container, .table-container {
+        box-shadow: none !important;
+        background: none !important;
+        border-radius: 0 !important;
+    }
+
+    /* Sesuaikan layout print */
+    body {
+        margin: 0;
+        padding: 0;
+        background: white;
+        font-family: Arial, sans-serif;
+        font-size: 12pt;
+        color: #000;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+        text-align: center;
+        font-size: 18pt;
+        font-weight: bold;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 0 auto;
+    }
+
+    th, td {
+        border: 1px solid #000;
+        padding: 8px;
+        text-align: left;
+    }
+
+    /* Sembunyikan tombol */
+    .btn-back, .btn-export {
+        display: none !important;
+    }
+
+    /* Sembunyikan alamat file dan footer page */
+    @page {
+        margin: 20mm;
+    }
+}
